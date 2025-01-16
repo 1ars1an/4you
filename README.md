@@ -1,10 +1,10 @@
-##### design docs
+# design docs
 
-###### project
+### project
 
 partially inspired by the simpsons, specifically homer's motivation behind working at the plant
 
-###### features
+### features
 
 so i'm going to be working on the mvp initially
 
@@ -14,14 +14,22 @@ so i'm going to be working on the mvp initially
   - add tasks
   - update tasks
   - delete tasks
-- [] select customized backgrounds
-  - [] upload img files
-  - [] select for specific task tables
-  - [] upload gallery??
+- [] task categories
+  - floating icon, expands to all categories
+- [] task settings
+  - [] select customized backgrounds
+    - [] upload img files
+    - [] select for specific task tables
+    - [] upload gallery??
+  - erase the category
 
-##### personal
+**general tasks**
 
-###### what i'm tryna gain
+- update with custom font
+
+### personal
+
+##### what i'm tryna gain
 
 - strengthen react skills
 - strengthen grid skills
