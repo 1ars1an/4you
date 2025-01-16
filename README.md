@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+##### design docs
 
-## Getting Started
+###### project
 
-First, run the development server:
+partially inspired by the simpsons, specifically homer's motivation behind working at the plant
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+###### features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+so i'm going to be working on the mvp initially
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+**mvp**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- [] crud tasks
+  - add tasks
+  - update tasks
+  - delete tasks
+- [] select customized backgrounds
+  - [] upload img files
+  - [] select for specific task tables
+  - [] upload gallery??
 
-## Learn More
+##### personal
 
-To learn more about Next.js, take a look at the following resources:
+###### what i'm tryna gain
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- strengthen react skills
+- strengthen grid skills
+- work with tailwindcss
+- learn/explore next.js
+- learn/explore vercel deployment
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+##### working area
 
-## Deploy on Vercel
+- what pages do i need?
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- how do i decide on the state?
