@@ -1,4 +1,7 @@
+'use client';
+
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
   return (
@@ -6,6 +9,13 @@ export default function Home() {
       <div className="flex py-4">
         <h3 className="mr-auto">Temp</h3>
         <div className="flex gap-2">
+          <button
+            onClick={() => {
+              toggleAddTaskVisibility(!addTaskVisibility);
+            }}
+          >
+            New
+          </button>
           <button>DP</button>
           <aside className="hidden">TASKS</aside>
           <button>ST</button>
