@@ -21,9 +21,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen flex flex-col`}
       >
-        <header className="flex p-4">
+        <header className="flex py-4 px-8">
           <Link href={'/profile/'} className="mr-auto">
             PF
           </Link>
