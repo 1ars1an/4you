@@ -11,11 +11,11 @@ so i'm going to be working on the mvp initially
 **mvp**
 
 - [] crud tasks
-  - add tasks
+  - ~~add tasks~~
   - update tasks
   - delete tasks
-- [] task categories
-  - floating icon, expands to all categories
+- [x] task categories
+  - ~~floating icon, expands to all categories~~
 - [] task settings
   - [] select customized backgrounds
     - [] upload img files
