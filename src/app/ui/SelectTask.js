@@ -1,20 +1,32 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import * as Select from '@radix-ui/react-select';
 import { useRouter } from 'next/navigation';
+import { useTaskManager } from '../lib/providers/TaskProvider';
+import { Coming_Soon } from 'next/font/google';
 
-let SelectTask = ({ categories }) => {
+let SelectTask = () => {
+  const { categories } = useTaskManager();
+
   const [selectedValue, setSelectedValue] = useState('');
-  const selectedTask = categories[selectedValue] || null;
+  const selectedTask =
+    categories.find((category) => {
+      return category.id === selectedValue;
+    }) || null;
 
   const router = useRouter();
+
+  useEffect(() => {
+    if (!selectedTask) {
+      return;
+    }
+
+    router.push(`${selectedTask.id}`);
+  }, [selectedTask, router]);
 
   return (
     <Select.Root
       value={selectedValue}
-      onValueChange={(newValue) => {
-        setSelectedValue(newValue);
-        router.push('/settings');
-      }}
+      onValueChange={setSelectedValue}
     >
       <Select.Trigger className="inline-flex h-[35px] items-center justify-center gap-[5px] rounded bg-white text-[16px] leading-none">
         <Select.Value placeholder="Category" />
@@ -29,7 +41,7 @@ let SelectTask = ({ categories }) => {
               {categories?.map((category) => (
                 <Select.Item
                   key={category.id}
-                  value={category.name}
+                  value={category.id}
                   className="relative flex h-[25px] select-none items-center rounded-[3px] pl-[25px] pr-[35px] text-[13px] leading-none"
                 >
                   <Select.ItemText>{category.name}</Select.ItemText>
