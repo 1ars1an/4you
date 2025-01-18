@@ -24,7 +24,7 @@ export function useTaskManager() {
 }
 
 export function TaskProvider({ children }) {
-  const [categories, setCategories] = useState({});
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     const savedTasks = JSON.parse(
@@ -51,12 +51,11 @@ export function TaskProvider({ children }) {
   const addCategory = (name) => {
     setCategories(
       produce((draft) => {
-        const categoryId = name.toLowerCase().replace(/\s+/g, '-');
-        // Prevent duplicate categories
-        if (draft[categoryId]) {
-          throw new Error(`Category "${name}" already exists`);
-        }
-        draft[categoryId] = { name, tasks: [] };
+        draft.push({
+          name,
+          id: crypto.randomUUID(),
+          tasks: [],
+        });
       })
     );
   };

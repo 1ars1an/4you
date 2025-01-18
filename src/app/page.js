@@ -5,12 +5,12 @@ import { useState, useEffect } from 'react';
 import { useTaskManager } from './lib/providers/TaskProvider';
 
 import { RxDialog } from './ui/Dialog';
+import { SelectTask } from './ui/SelectTask';
 
 export default function Home() {
   const {
     categories,
     addCategory,
-    setCategories,
     addTask,
     updateTask,
     deleteTask,
@@ -22,12 +22,13 @@ export default function Home() {
   return (
     <section className="h-[calc(100vh-4rem)] w-[calc(100vw-4rem)] mx-auto flex flex-col border-2 border-black border-solid">
       <div className="flex py-4">
-        <h3 className="mr-auto">Temp</h3>
-        <div className="flex gap-2">
-          <RxDialog></RxDialog>
-          <button>DP</button>
-          <aside className="hidden">TASKS</aside>
+        <div className="mr-auto flex gap-4 items-center">
+          <h3 className="">Temp</h3>
           <button>ST</button>
+        </div>
+        <div className="flex gap-4 items-center">
+          <RxDialog></RxDialog>
+          <SelectTask categories={categories}></SelectTask>
         </div>
       </div>
       <main className="flex-1 relative grid">
