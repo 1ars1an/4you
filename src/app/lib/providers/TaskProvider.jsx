@@ -24,7 +24,21 @@ export function useTaskManager() {
 }
 
 export function TaskProvider({ children }) {
-  const [categories, setCategories] = useState([]);
+  const [categories, setCategories] = useState({});
+
+  useEffect(() => {
+    const savedTasks = JSON.parse(
+      window.localStorage.getItem('taskCategories')
+    );
+
+    console.log(savedTasks);
+
+    if (savedTasks === null) {
+      return;
+    }
+
+    setCategories(savedTasks);
+  }, []);
 
   useEffect(() => {
     localStorage.setItem(
@@ -133,6 +147,7 @@ export function TaskProvider({ children }) {
 
   const value = {
     categories,
+    setCategories,
     addCategory,
     updateCategory,
     deleteCategory,
