@@ -1,18 +1,18 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import { useState } from 'react';
-import { useTaskManager } from '../lib/providers/TaskProvider';
+import { useTaskManager } from '../../lib/providers/TaskProvider';
 
-let RxDialog = ({ handleCreateTaskCategory }) => {
+let RxDialog = () => {
   const { addCategory } = useTaskManager();
 
   // Local state to control the dialog's open/close state
   const [isOpen, setIsOpen] = useState(false);
 
-  const [inputTask, setInputTask] = useState('');
+  const [categoryName, setCategoryName] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    addCategory(inputTask);
+    addCategory(categoryName);
     setIsOpen(false);
   };
 
@@ -28,15 +28,22 @@ let RxDialog = ({ handleCreateTaskCategory }) => {
           <Dialog.Description></Dialog.Description>
           <form onSubmit={handleSubmit}>
             <fieldset className="flex items-center my-8 gap-4">
-              <label htmlFor="taskname" className="font-small">
-                Task Category:
-              </label>
-              <input
-                type="text"
-                id="taskname"
-                value={inputTask}
-                onChange={(e) => setInputTask(e.target.value)}
-              />
+              <div className="">
+                <label
+                  htmlFor="taskname"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="taskname"
+                  name="taskname"
+                  value={categoryName}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  onChange={(e) => setCategoryName(e.target.value)}
+                />
+              </div>
             </fieldset>
 
             <div>

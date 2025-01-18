@@ -79,16 +79,21 @@ export function TaskProvider({ children }) {
   };
 
   // Task management functions
-  const addTask = (categoryId, taskTitle) => {
+  const addTask = (categoryId, taskTitle, taskDeadline) => {
     setCategories(
       produce((draft) => {
-        if (!draft[categoryId]) {
+        const categoryIndex = draft.findIndex(
+          (category) => category.id === categoryId
+        );
+
+        if (!draft[categoryIndex]) {
           throw new Error(`Category ${categoryId} not found`);
         }
-        draft[categoryId].tasks.push({
-          id: Date.now(),
+        draft[categoryIndex].tasks.push({
+          id: crypto.randomUUID(),
           title: taskTitle,
           completed: false,
+          deadline: taskDeadline,
           createdAt: new Date().toISOString(),
         });
       })

@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { useTaskManager } from './lib/providers/TaskProvider';
 
-import { RxDialog } from './ui/Dialog';
+import { RxDialog } from './ui/Dialogs/Dialog';
 import { SelectTask } from './ui/SelectTask';
 
 export default function Home() {
