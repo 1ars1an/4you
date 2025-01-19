@@ -55,7 +55,7 @@ export default function Task() {
               return (
                 <div
                   key={task.id}
-                  className="bg-white shadow p-4 flex flex-col items-center relative z-10"
+                  className="bg-white shadow p-4 flex flex-col items-center relative z"
                 >
                   <h3 className="text-lg font-semibold">
                     {task.title}
@@ -67,7 +67,7 @@ export default function Task() {
                 </div>
               );
             })}
-            <div className="absolute inset-0 z-0">
+            <div className="absolute inset-0 -z-10">
               <Image
                 src="/taskVenom-desktop.jpg"
                 alt="task background"
