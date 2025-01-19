@@ -10,6 +10,8 @@ let TaskDialog = ({ categoryId }) => {
 
   const [taskName, setTaskName] = useState('');
 
+  const [taskDesc, setTaskDesc] = useState('');
+
   const [taskDeadline, setTaskDeadline] = useState('');
 
   const handleSubmit = (e) => {
@@ -20,7 +22,7 @@ let TaskDialog = ({ categoryId }) => {
       ? new Date(taskDeadline).toISOString()
       : null;
 
-    addTask(categoryId, taskName, taskDeadline);
+    addTask(categoryId, taskName, taskDesc, taskDeadline);
 
     setIsOpen(false);
   };
@@ -51,6 +53,22 @@ let TaskDialog = ({ categoryId }) => {
                   value={taskName}
                   className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
                   onChange={(e) => setTaskName(e.target.value)}
+                />
+              </div>
+              <div className="">
+                <label
+                  htmlFor="taskdesc"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Desc
+                </label>
+                <input
+                  type="textarea"
+                  id="taskdesc"
+                  name="taskdesc"
+                  value={taskDesc}
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+                  onChange={(e) => setTaskDesc(e.target.value)}
                 />
               </div>
               <div className="">

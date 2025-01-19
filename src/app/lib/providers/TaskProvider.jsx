@@ -79,7 +79,7 @@ export function TaskProvider({ children }) {
   };
 
   // Task management functions
-  const addTask = (categoryId, taskTitle, taskDeadline) => {
+  const addTask = (categoryId, taskTitle, taskDesc, taskDeadline) => {
     setCategories(
       produce((draft) => {
         const categoryIndex = draft.findIndex(
@@ -92,6 +92,7 @@ export function TaskProvider({ children }) {
         draft[categoryIndex].tasks.push({
           id: crypto.randomUUID(),
           title: taskTitle,
+          desc: taskDesc,
           completed: false,
           deadline: taskDeadline,
           createdAt: new Date().toISOString(),
