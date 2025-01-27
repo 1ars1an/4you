@@ -63,8 +63,11 @@ export function TaskProvider({ children }) {
   const updateCategory = (categoryId, newName) => {
     setCategories(
       produce((draft) => {
-        if (draft[categoryId]) {
-          draft[categoryId].name = newName;
+        const index = draft.findIndex(
+          (category) => category.id === categoryId
+        );
+        if (index !== -1) {
+          draft[index].name = newName;
         }
       })
     );

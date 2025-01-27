@@ -3,8 +3,10 @@
 import { useParams } from 'next/navigation';
 import { useState } from 'react';
 import { useTaskManager } from '@/app/lib/providers/TaskProvider';
-import { RxAlertDialog } from '@/app/ui/AlertDialog';
 import { useRouter } from 'next/navigation';
+
+import { RxAlertDialog } from '@/app/ui/AlertDialog';
+import { UpdateCat } from '../../ui/Forms/CatUpdate';
 
 export default function TaskSettings() {
   const params = useParams();
@@ -17,7 +19,15 @@ export default function TaskSettings() {
 
   return (
     <div>
-      <section></section>
+      <section className="flex flex-col">
+        <h3>Update Category</h3>
+        <div>
+          <UpdateCat
+            categoryId={categoryId}
+            updateCategory={updateCategory}
+          ></UpdateCat>
+        </div>
+      </section>
       <section></section>
       <section className="flex flex-col">
         <h3>Delete Category</h3>

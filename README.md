@@ -12,8 +12,8 @@ so i'm going to be working on the mvp initially
 
 - [] crud tasks
   - ~~add tasks~~
-  - update tasks
-  - delete tasks
+  - ~~update tasks~~
+  - ~~delete tasks~~
 - [x] task categories
   - ~~floating icon, expands to all categories~~
 - [] task settings
