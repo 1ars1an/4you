@@ -19,14 +19,14 @@ export default function Task() {
 
   const {
     categories,
-    addCategory,
     addTask,
     updateTask,
+    handleTaskCompletion,
     deleteTask,
     getCategoryStats,
   } = useTaskManager();
 
-  const currentTask =
+  const currentCategory =
     categories.find((category) => category.id === categoryId) || null;
 
   return (
@@ -35,9 +35,9 @@ export default function Task() {
       <div className="flex py-4">
         <div className="mr-auto flex gap-4 items-center">
           <h3 className="">
-            {currentTask ? currentTask.name : 'Error'}
+            {currentCategory ? currentCategory.name : 'Error'}
           </h3>
-          {currentTask ? (
+          {currentCategory ? (
             <Link href={`${categoryId}/settings`}>Settings</Link>
           ) : undefined}
         </div>
@@ -47,8 +47,12 @@ export default function Task() {
           <RxDialog />
         </div>
       </div>
-      {currentTask && (
-        <TaskGridSection tasks={currentTask.tasks}></TaskGridSection>
+      {currentCategory && (
+        <TaskGridSection
+          categoryId={categoryId}
+          tasks={currentCategory.tasks}
+          handleTaskCompletion={handleTaskCompletion}
+        ></TaskGridSection>
       )}
     </section>
   );

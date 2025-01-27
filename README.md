@@ -21,7 +21,6 @@ so i'm going to be working on the mvp initially
     - [] upload img files
     - [] select for specific task tables
     - [] upload gallery??
-  - erase the category
 
 **general tasks**
 

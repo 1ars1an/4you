@@ -96,7 +96,7 @@ export function TaskProvider({ children }) {
           id: crypto.randomUUID(),
           title: taskTitle,
           desc: taskDesc,
-          completed: false,
+          isCompleted: false,
           deadline: taskDeadline,
           createdAt: new Date().toISOString(),
         });
@@ -112,6 +112,23 @@ export function TaskProvider({ children }) {
         );
         if (task) {
           Object.assign(task, updates);
+        }
+      })
+    );
+  };
+
+  const handleTaskCompletion = (categoryId, taskId) => {
+    setCategories(
+      produce((draft) => {
+        const categoryIndex = draft.findIndex(
+          (category) => category.id === categoryId
+        );
+        const taskIndex = draft[categoryIndex].tasks.findIndex(
+          (task) => task.id === taskId
+        );
+        if (taskIndex !== -1) {
+          draft[categoryIndex].tasks[taskIndex].isCompleted =
+            !draft[categoryIndex].tasks[taskIndex].isCompleted;
         }
       })
     );
@@ -161,6 +178,7 @@ export function TaskProvider({ children }) {
     deleteCategory,
     addTask,
     updateTask,
+    handleTaskCompletion,
     moveTask,
     deleteTask,
     getCategoryStats,

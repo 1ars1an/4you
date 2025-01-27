@@ -1,6 +1,11 @@
 import Image from 'next/image';
+import { TaskCheckbox } from './Forms/TaskCompletion';
 
-const TaskGridSection = ({ tasks }) => {
+const TaskGridSection = ({
+  categoryId,
+  tasks,
+  handleTaskCompletion,
+}) => {
   // First, we need to calculate how many tasks can fit in one grid section
   const calculateTasksPerGrid = () => {
     // We account for viewport width minus any margins/padding
@@ -69,6 +74,14 @@ const TaskGridSection = ({ tasks }) => {
                 </h3>
                 <p className="text-gray-600 mt-2">{task.desc}</p>
                 <p className="text-gray-600 mt-2">{task.deadline}</p>
+                <div>
+                  <TaskCheckbox
+                    isCompleted={task.isCompleted}
+                    onChange={() =>
+                      handleTaskCompletion(categoryId, task.id)
+                    }
+                  />
+                </div>
               </div>
             ))}
             {/* Each grid section gets its own background image */}
