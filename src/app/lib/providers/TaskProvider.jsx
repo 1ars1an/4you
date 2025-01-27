@@ -151,9 +151,15 @@ export function TaskProvider({ children }) {
   const deleteTask = (categoryId, taskId) => {
     setCategories(
       produce((draft) => {
-        draft[categoryId].tasks = draft[categoryId].tasks.filter(
-          (task) => task.id !== taskId
+        const categoryIndex = draft.findIndex(
+          (category) => category.id === categoryId
         );
+        const taskIndex = draft[categoryIndex].tasks.findIndex(
+          (task) => task.id === taskId
+        );
+        if (taskIndex !== -1) {
+          draft[categoryIndex].tasks.splice(taskIndex, 1);
+        }
       })
     );
   };

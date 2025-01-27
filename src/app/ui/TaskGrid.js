@@ -1,10 +1,12 @@
 import Image from 'next/image';
 import { TaskCheckbox } from './Forms/TaskCompletion';
+import { DeleteTaskButton } from './Forms/TaskDeletion';
 
 const TaskGridSection = ({
   categoryId,
   tasks,
   handleTaskCompletion,
+  deleteTask,
 }) => {
   // First, we need to calculate how many tasks can fit in one grid section
   const calculateTasksPerGrid = () => {
@@ -74,13 +76,18 @@ const TaskGridSection = ({
                 </h3>
                 <p className="text-gray-600 mt-2">{task.desc}</p>
                 <p className="text-gray-600 mt-2">{task.deadline}</p>
-                <div>
+                <div className="flex gap-2">
                   <TaskCheckbox
                     isCompleted={task.isCompleted}
                     onChange={() =>
                       handleTaskCompletion(categoryId, task.id)
                     }
                   />
+                  <DeleteTaskButton
+                    onClick={() => deleteTask(categoryId, task.id)}
+                  >
+                    DEL
+                  </DeleteTaskButton>
                 </div>
               </div>
             ))}
