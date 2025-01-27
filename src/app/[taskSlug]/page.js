@@ -30,7 +30,7 @@ export default function Task() {
     categories.find((category) => category.id === categoryId) || null;
 
   return (
-    <section className="h-[calc(100vh-4rem)] w-[calc(100vw-4rem)] mx-auto flex flex-col border-2 border-black border-solid">
+    <section className="h-[calc(100vh-4rem)] w-[calc(100vw-4rem)] mx-auto flex flex-col">
       {/* Shared Header */}
       <div className="flex py-4">
         <div className="mr-auto flex gap-4 items-center">
