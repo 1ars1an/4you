@@ -34,7 +34,12 @@ const TaskGridSection = ({ tasks }) => {
 
   return (
     // We wrap our grid sections in a container that will stack them vertically
-    <div className="flex flex-col gap-8">
+    <div
+      className="flex flex-col gap-8"
+      style={{
+        border: '3px solid red',
+      }}
+    >
       {gridGroups.map((gridTasks, index) => (
         // Each grid section is a complete copy of your original main section
         <main
@@ -45,7 +50,7 @@ const TaskGridSection = ({ tasks }) => {
             gridTemplateColumns:
               'repeat(auto-fit, minmax(300px, 1fr))',
             maxWidth: '100%',
-            height: index === 0 ? ' h-[calc(100vh-8rem)]' : '100vh',
+            minHeight: '100vh',
           }}
         >
           {/* We keep the exact structure you had, but use our subdivided tasks */}
@@ -56,7 +61,7 @@ const TaskGridSection = ({ tasks }) => {
                 className="bg-white shadow p-4 flex flex-col items-center relative border-2 border-black"
                 style={{
                   minWidth: '300px',
-                  height: '250px', // Fixed height for consistent sizing
+                  // Fixed height for consistent sizing (removed for now)
                 }}
               >
                 <h3 className="text-lg font-semibold">
