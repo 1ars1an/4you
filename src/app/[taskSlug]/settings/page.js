@@ -1,26 +1,31 @@
 'use client';
 
+import { useParams } from 'next/navigation';
 import { useState } from 'react';
+import { useTaskManager } from '@/app/lib/providers/TaskProvider';
+import { RxAlertDialog } from '@/app/ui/AlertDialog';
+import { useRouter } from 'next/navigation';
 
 export default function TaskSettings() {
-  const [isAlertOpen, setIsAlertOpen] = useState('false');
+  const params = useParams();
+  const categoryId = params.taskSlug;
 
-  function handleAlertClick(e) {
-    setIsAlertOpen(!isAlertOpen);
-  }
+  const { categories, updateCategory, deleteCategory } =
+    useTaskManager();
+
+  const router = useRouter();
 
   return (
     <div>
       <section></section>
       <section></section>
-      <section>
+      <section className="flex flex-col">
         <h3>Delete Category</h3>
-        <div className="flex flex-col">
-          <p>
-            Warning: Deleting the category is an irreversible action!
-          </p>
-          <button onClick={(e) => handleAlertClick(e)}>ICON</button>
-        </div>
+        <RxAlertDialog
+          categoryId={categoryId}
+          deleteCategory={deleteCategory}
+          router={router}
+        ></RxAlertDialog>
       </section>
     </div>
   );

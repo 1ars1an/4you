@@ -73,7 +73,7 @@ export function TaskProvider({ children }) {
   const deleteCategory = (categoryId) => {
     setCategories(
       produce((draft) => {
-        delete draft[categoryId];
+        return draft.filter((category) => category.id !== categoryId);
       })
     );
   };

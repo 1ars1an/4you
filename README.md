@@ -40,5 +40,6 @@ so i'm going to be working on the mvp initially
 ##### working area
 
 - what pages do i need?
-
 - how do i decide on the state?
+
+ok i decided on these with some thought that i did in my head, probably not a good idea. will try to be more intentional with it for further decisions.
