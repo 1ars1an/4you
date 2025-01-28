@@ -1,7 +1,13 @@
 const TaskButton = ({ onClick, children }) => {
+  function handleClick(e) {
+    e.stopPropagation();
+    onClick();
+  }
+
   return (
     <button
-      onClick={onClick}
+      type="button"
+      onClick={handleClick}
       className="w-5 h-5 
           rounded-full
           flex items-center 

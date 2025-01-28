@@ -1,8 +1,15 @@
 import * as Dialog from '@radix-ui/react-dialog';
 import { useState } from 'react';
 import { TaskButton } from '../Forms/TaskButton';
+import { TaskCheckbox } from '../Forms/TaskCompletion';
 
-let TkDialog = ({ categoryId, task, updateTask }) => {
+let TkDialog = ({
+  categoryId,
+  task,
+  updateTask,
+  deleteTask,
+  children,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const [taskName, setTaskName] = useState(task.title);
@@ -26,13 +33,11 @@ let TkDialog = ({ categoryId, task, updateTask }) => {
 
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
-      <Dialog.Trigger asChild>
-        <TaskButton>...</TaskButton>
-      </Dialog.Trigger>
+      <Dialog.Trigger asChild>{children}</Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-blackA6" />
         <Dialog.Content className="fixed left-1/2 top-1/2 max-h-[85vh] w-[90vw] max-w-[450px] -translate-x-1/2 -translate-y-1/2 rounded-md bg-white p-[25px]">
-          <Dialog.Title>Update Task Info</Dialog.Title>
+          <Dialog.Title>Task Settings</Dialog.Title>
           <Dialog.Description></Dialog.Description>
           <form onSubmit={handleSubmit}>
             <fieldset className="flex flex-col justify-center my-8 gap-4">
@@ -85,8 +90,15 @@ let TkDialog = ({ categoryId, task, updateTask }) => {
                 />
               </div>
             </fieldset>
-            <div>
-              <button type="submit">Update</button>
+            <div className="flex">
+              <button type="submit" className="mr-auto">
+                Update
+              </button>
+              <TaskButton
+                onClick={() => deleteTask(categoryId, task.id)}
+              >
+                DEL
+              </TaskButton>
             </div>
           </form>
           <Dialog.Close asChild>

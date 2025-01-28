@@ -15,7 +15,6 @@ let TaskDialog = ({ categoryId }) => {
   const [taskDeadline, setTaskDeadline] = useState('');
 
   const handleSubmit = (e) => {
-    console.log(taskDeadline);
     e.preventDefault();
 
     const formattedDeadline = taskDeadline

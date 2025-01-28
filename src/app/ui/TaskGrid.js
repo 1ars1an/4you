@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { TaskCheckbox } from './Forms/TaskCompletion';
-import { TaskButton } from './Forms/TaskButton';
 import { TkDialog } from './Dialogs/TaskInfoDialog';
+import { Fragment } from 'react';
 
 const TaskGridSection = ({
   categoryId,
@@ -65,38 +65,37 @@ const TaskGridSection = ({
           {/* We keep the exact structure you had, but use our subdivided tasks */}
           <>
             {gridTasks.map((task) => (
-              <div
+              <TkDialog
                 key={task.id}
-                className="bg-white shadow p-4 flex flex-col items-center relative border-2 border-black"
-                style={{
-                  minWidth: '300px',
-                  // Fixed height for consistent sizing (removed for now)
-                }}
+                categoryId={categoryId}
+                task={task}
+                updateTask={updateTask}
+                deleteTask={deleteTask}
               >
-                <h3 className="text-lg font-semibold">
-                  {task.title}
-                </h3>
-                <p className="text-gray-600 mt-2">{task.desc}</p>
-                <p className="text-gray-600 mt-2">{task.deadline}</p>
-                <div className="flex gap-2">
-                  <TaskCheckbox
-                    isCompleted={task.isCompleted}
-                    onChange={() =>
-                      handleTaskCompletion(categoryId, task.id)
-                    }
-                  />
-                  <TaskButton
-                    onClick={() => deleteTask(categoryId, task.id)}
-                  >
-                    DEL
-                  </TaskButton>
-                  <TkDialog
-                    categoryId={categoryId}
-                    task={task}
-                    updateTask={updateTask}
-                  ></TkDialog>
+                <div
+                  className="bg-white shadow p-4 flex flex-col items-center relative border-2 border-black"
+                  style={{
+                    minWidth: '300px',
+                    // Fixed height for consistent sizing (removed for now)
+                  }}
+                >
+                  <h3 className="text-lg font-semibold">
+                    {task.title}
+                  </h3>
+                  <p className="text-gray-600 mt-2">{task.desc}</p>
+                  <p className="text-gray-600 mt-2">
+                    {task.deadline}
+                  </p>
+                  <div onClick={(e) => e.stopPropagation()}>
+                    <TaskCheckbox
+                      isCompleted={task.isCompleted}
+                      onChange={() =>
+                        handleTaskCompletion(categoryId, task.id)
+                      }
+                    />
+                  </div>
                 </div>
-              </div>
+              </TkDialog>
             ))}
             {/* Each grid section gets its own background image */}
             <div className="absolute inset-0 -z-10">
