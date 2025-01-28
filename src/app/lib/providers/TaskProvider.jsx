@@ -104,19 +104,6 @@ export function TaskProvider({ children }) {
     );
   };
 
-  const updateTask = (categoryId, taskId, updates) => {
-    setCategories(
-      produce((draft) => {
-        const task = draft[categoryId].tasks.find(
-          (t) => t.id === taskId
-        );
-        if (task) {
-          Object.assign(task, updates);
-        }
-      })
-    );
-  };
-
   const handleTaskCompletion = (categoryId, taskId) => {
     setCategories(
       produce((draft) => {
@@ -160,6 +147,40 @@ export function TaskProvider({ children }) {
         if (taskIndex !== -1) {
           draft[categoryIndex].tasks.splice(taskIndex, 1);
         }
+      })
+    );
+  };
+
+  const updateTask = (
+    categoryId,
+    taskId,
+    taskTitle,
+    taskDesc,
+    taskDeadline
+  ) => {
+    setCategories(
+      produce((draft) => {
+        const category = draft.find(
+          (category) => category.id === categoryId
+        );
+
+        if (!category) {
+          throw new Error(`Category ${categoryId} not found`);
+        }
+
+        const taskToUpdate = category.tasks.find(
+          (task) => task.id === taskId
+        );
+
+        if (!taskToUpdate) {
+          throw new Error(
+            `Task ${taskId} not found in category ${categoryId}`
+          );
+        }
+
+        taskToUpdate.title = taskTitle;
+        taskToUpdate.desc = taskDesc;
+        taskToUpdate.deadline = taskDeadline;
       })
     );
   };

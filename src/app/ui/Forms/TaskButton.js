@@ -1,15 +1,12 @@
-const DeleteTaskButton = ({ onClick, children }) => {
+const TaskButton = ({ onClick, children }) => {
   return (
     <button
       onClick={onClick}
       className="w-5 h-5 
-          rounded-full 
-          bg-red-500 
-          hover:bg-red-600 
+          rounded-full
           flex items-center 
           justify-center 
-          text-white 
-          transition-colors
+          text-black
           border-2 border-red-600"
     >
       {children}
@@ -17,4 +14,4 @@ const DeleteTaskButton = ({ onClick, children }) => {
   );
 };
 
-export { DeleteTaskButton };
+export { TaskButton };

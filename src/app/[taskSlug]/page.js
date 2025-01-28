@@ -52,6 +52,7 @@ export default function Task() {
           categoryId={categoryId}
           tasks={currentCategory.tasks}
           handleTaskCompletion={handleTaskCompletion}
+          updateTask={updateTask}
           deleteTask={deleteTask}
         ></TaskGridSection>
       )}

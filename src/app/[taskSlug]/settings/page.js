@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useTaskManager } from '@/app/lib/providers/TaskProvider';
 import { useRouter } from 'next/navigation';
 
-import { RxAlertDialog } from '@/app/ui/AlertDialog';
+import { RxAlertDialog } from '@/app/ui/Dialogs/AlertDialog';
 import { UpdateCat } from '../../ui/Forms/CatUpdate';
 
 export default function TaskSettings() {

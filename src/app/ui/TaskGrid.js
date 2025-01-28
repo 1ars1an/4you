@@ -1,11 +1,13 @@
 import Image from 'next/image';
 import { TaskCheckbox } from './Forms/TaskCompletion';
-import { DeleteTaskButton } from './Forms/TaskDeletion';
+import { TaskButton } from './Forms/TaskButton';
+import { TkDialog } from './Dialogs/TaskInfoDialog';
 
 const TaskGridSection = ({
   categoryId,
   tasks,
   handleTaskCompletion,
+  updateTask,
   deleteTask,
 }) => {
   // First, we need to calculate how many tasks can fit in one grid section
@@ -83,11 +85,16 @@ const TaskGridSection = ({
                       handleTaskCompletion(categoryId, task.id)
                     }
                   />
-                  <DeleteTaskButton
+                  <TaskButton
                     onClick={() => deleteTask(categoryId, task.id)}
                   >
                     DEL
-                  </DeleteTaskButton>
+                  </TaskButton>
+                  <TkDialog
+                    categoryId={categoryId}
+                    task={task}
+                    updateTask={updateTask}
+                  ></TkDialog>
                 </div>
               </div>
             ))}
