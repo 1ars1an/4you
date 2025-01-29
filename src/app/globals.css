@@ -19,3 +19,24 @@ body {
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.shimmer-overlay {
+  background-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(255, 0, 187, 0.2) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite linear;
+  pointer-events: none; /* Ensures clicks pass through the overlay */
+}

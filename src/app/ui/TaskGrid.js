@@ -45,9 +45,7 @@ const TaskGridSection = ({
     // We wrap our grid sections in a container that will stack them vertically
     <div
       className="flex flex-col gap-8"
-      style={{
-        border: '3px solid red',
-      }}
+      style={{ border: '3px solid red' }}
     >
       {gridGroups.map((gridTasks, index) => (
         // Each grid section is a complete copy of your original main section
@@ -65,38 +63,49 @@ const TaskGridSection = ({
           {/* We keep the exact structure you had, but use our subdivided tasks */}
           <>
             {gridTasks.map((task) => (
-              <TkDialog
-                key={task.id}
-                categoryId={categoryId}
-                task={task}
-                updateTask={updateTask}
-                deleteTask={deleteTask}
-              >
-                <div
-                  className="bg-white shadow p-4 flex flex-col items-center relative border-2 border-black"
-                  style={{
-                    minWidth: '300px',
-                    // Fixed height for consistent sizing (removed for now)
-                  }}
+              <Fragment key={task.id}>
+                <TkDialog
+                  key={task.id}
+                  categoryId={categoryId}
+                  task={task}
+                  updateTask={updateTask}
+                  deleteTask={deleteTask}
                 >
-                  <h3 className="text-lg font-semibold">
-                    {task.title}
-                  </h3>
-                  <p className="text-gray-600 mt-2">{task.desc}</p>
-                  <p className="text-gray-600 mt-2">
-                    {task.deadline}
-                  </p>
-                  <div onClick={(e) => e.stopPropagation()}>
-                    <TaskCheckbox
-                      isCompleted={task.isCompleted}
-                      onChange={() =>
-                        handleTaskCompletion(categoryId, task.id)
-                      }
-                    />
+                  <div
+                    className={`bg-white shadow p-4 flex flex-col items-center relative border-2 border-black ${
+                      task.isCompleted ? 'opacity-0' : ''
+                    }`}
+                    style={{ minWidth: '300px' }}
+                    // Fixed height for consistent sizing (removed for now)
+                  >
+                    {/* Content */}
+                    <h3 className="text-lg font-semibold">
+                      {task.title}
+                    </h3>
+                    <p className="text-gray-600 mt-2">{task.desc}</p>
+                    <p className="text-gray-600 mt-2">
+                      {task.deadline}
+                    </p>
+                    <div onClick={(e) => e.stopPropagation()}>
+                      <TaskCheckbox
+                        isCompleted={task.isCompleted}
+                        onChange={() =>
+                          handleTaskCompletion(categoryId, task.id)
+                        }
+                      />
+                    </div>
                   </div>
-                </div>
-              </TkDialog>
+                </TkDialog>
+                {/* Shimmer Overlay */}
+                {task.isCompleted && (
+                  <div
+                    className="absolute inset-0 shimmer-overlay opacity-80"
+                    style={{ border: '1px solid black' }}
+                  />
+                )}
+              </Fragment>
             ))}
+            {console.log(gridTasks)}
             {/* Each grid section gets its own background image */}
             <div className="absolute inset-0 -z-10">
               <Image
