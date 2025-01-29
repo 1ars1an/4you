@@ -10,13 +10,13 @@ so i'm going to be working on the mvp initially
 
 **mvp**
 
-- [] crud tasks
+- [x] crud tasks
   - ~~add tasks~~
   - ~~update tasks~~
   - ~~delete tasks~~
 - [x] task categories
   - ~~floating icon, expands to all categories~~
-- [] task settings
+- [x] task settings
   - [] select customized backgrounds
     - [] upload img files
     - [] select for specific task tables
@@ -42,3 +42,5 @@ so i'm going to be working on the mvp initially
 - how do i decide on the state?
 
 ok i decided on these with some thought that i did in my head, probably not a good idea. will try to be more intentional with it for further decisions.
+
+- current shimmer animation adds a layer for each task completed. do i continue with this or just have 1 layer that runs when all tasks completed?
