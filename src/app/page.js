@@ -26,8 +26,8 @@ export default function Home() {
           <h3 className="">Select Category</h3>
         </div>
         <div className="flex gap-4 items-center">
-          <RxDialog></RxDialog>
           <SelectTask categories={categories}></SelectTask>
+          <RxDialog></RxDialog>
         </div>
       </div>
     </section>

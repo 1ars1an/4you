@@ -10,6 +10,8 @@ import { RxAlertDialog } from '@/app/ui/Dialogs/AlertDialog';
 import { UpdateCat } from '../../ui/Forms/CatUpdate';
 import { TaskCheckbox } from '@/app/ui/Forms/TaskCompletion';
 
+import { Trash2 } from 'lucide-react';
+
 export default function TaskSettings() {
   const params = useParams();
   const categoryId = params.taskSlug;

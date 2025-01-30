@@ -2,6 +2,8 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { useState } from 'react';
 import { useTaskManager } from '../../lib/providers/TaskProvider';
 
+import { Folder, FolderPlus } from 'lucide-react';
+
 let RxDialog = () => {
   const { addCategory } = useTaskManager();
 
@@ -19,7 +21,9 @@ let RxDialog = () => {
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Trigger asChild>
-        <button>New</button>
+        <button>
+          <FolderPlus></FolderPlus>
+        </button>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-blackA6" />

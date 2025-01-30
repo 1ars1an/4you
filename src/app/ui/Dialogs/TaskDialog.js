@@ -2,6 +2,8 @@ import * as Dialog from '@radix-ui/react-dialog';
 import { useState } from 'react';
 import { useTaskManager } from '../../lib/providers/TaskProvider';
 
+import { FilePlus } from 'lucide-react';
+
 let TaskDialog = ({ categoryId }) => {
   const { addTask } = useTaskManager();
 
@@ -29,7 +31,9 @@ let TaskDialog = ({ categoryId }) => {
   return (
     <Dialog.Root open={isOpen} onOpenChange={setIsOpen}>
       <Dialog.Trigger asChild>
-        <button>Add</button>
+        <button>
+          <FilePlus></FilePlus>
+        </button>
       </Dialog.Trigger>
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 bg-blackA6" />

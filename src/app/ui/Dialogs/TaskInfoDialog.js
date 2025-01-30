@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { TaskButton } from '../Forms/TaskButton';
 import { TaskCheckbox } from '../Forms/TaskCompletion';
 
+import { Trash, Trash2 } from 'lucide-react';
+
 let TkDialog = ({
   categoryId,
   task,
@@ -97,7 +99,7 @@ let TkDialog = ({
               <TaskButton
                 onClick={() => deleteTask(categoryId, task.id)}
               >
-                DEL
+                <Trash2></Trash2>
               </TaskButton>
             </div>
           </form>

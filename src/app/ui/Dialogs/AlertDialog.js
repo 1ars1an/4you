@@ -1,5 +1,7 @@
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
 
+import { Trash2 } from 'lucide-react';
+
 const RxAlertDialog = ({ categoryId, deleteCategory, router }) => {
   function handleClick() {
     deleteCategory(categoryId);
@@ -9,7 +11,9 @@ const RxAlertDialog = ({ categoryId, deleteCategory, router }) => {
   return (
     <AlertDialog.Root>
       <AlertDialog.Trigger asChild>
-        <button onClick={() => {}}>ICON</button>
+        <button onClick={() => {}}>
+          <Trash2></Trash2>
+        </button>
       </AlertDialog.Trigger>
       <AlertDialog.Portal>
         <AlertDialog.Overlay />
@@ -23,7 +27,9 @@ const RxAlertDialog = ({ categoryId, deleteCategory, router }) => {
               <button>Cancel</button>
             </AlertDialog.Cancel>
             <AlertDialog.Action asChild>
-              <button onClick={() => handleClick()}>Delete</button>
+              <button onClick={() => handleClick()}>
+                <Trash2></Trash2>
+              </button>
             </AlertDialog.Action>
           </div>
           <AlertDialog.Cancel />
