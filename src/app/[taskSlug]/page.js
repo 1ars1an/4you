@@ -42,7 +42,7 @@ export default function Task() {
             <Link href={`${categoryId}/settings`}>Settings</Link>
           ) : undefined}
         </div>
-        <div className="flex gap-4 items-center">
+        <div className="flex gap-6 items-center">
           <TaskDialog categoryId={categoryId} />
           <SelectTask />
           <RxDialog />

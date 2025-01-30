@@ -28,21 +28,26 @@ let SelectTask = () => {
       value={selectedValue}
       onValueChange={setSelectedValue}
     >
-      <Select.Trigger className="inline-flex h-[35px] items-center justify-center gap-[5px] rounded bg-white text-[16px] leading-none">
+      <Select.Trigger className="inline-flex h-[35px] items-center justify-center gap-[5px] rounded bg-white px-4 py-2 text-[16px] leading-none border border-gray-300 shadow-sm">
         <Select.Value placeholder="Category" />
         <Select.Icon />
       </Select.Trigger>
 
       <Select.Portal>
-        <Select.Content>
+        <Select.Content
+          side="bottom"
+          align="start"
+          className="w-[135px] bg-white shadow-md rounded-md p-2"
+        >
           <Select.ScrollUpButton />
-          <Select.Viewport>
+          <Select.Viewport className="">
+            {' '}
             <Select.Group>
               {categories?.map((category) => (
                 <Select.Item
                   key={category.id}
                   value={category.id}
-                  className="relative flex h-[25px] select-none items-center rounded-[3px] pl-[25px] pr-[35px] text-[13px] leading-none"
+                  className="relative flex h-[35px] select-none items-center rounded-md px-4 py-2 text-[14px] leading-none hover:bg-gray-100 cursor-pointer"
                 >
                   <Select.ItemText>{category.name}</Select.ItemText>
                   <Select.ItemIndicator className="absolute left-0 inline-flex w-[25px] items-center justify-center" />
