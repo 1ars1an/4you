@@ -1,12 +1,14 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useTaskManager } from '@/app/lib/providers/TaskProvider';
+import { globalSettingsContext } from '@/app/lib/providers/globalSettings';
 import { useRouter } from 'next/navigation';
 
 import { RxAlertDialog } from '@/app/ui/Dialogs/AlertDialog';
 import { UpdateCat } from '../../ui/Forms/CatUpdate';
+import { TaskCheckbox } from '@/app/ui/Forms/TaskCompletion';
 
 export default function TaskSettings() {
   const params = useParams();
@@ -14,6 +16,10 @@ export default function TaskSettings() {
 
   const { categories, updateCategory, deleteCategory } =
     useTaskManager();
+
+  const { shimmerEnabled, setShimmerEnabled } = useContext(
+    globalSettingsContext
+  );
 
   const router = useRouter();
 
@@ -28,7 +34,6 @@ export default function TaskSettings() {
           ></UpdateCat>
         </div>
       </section>
-      <section></section>
       <section className="flex flex-col">
         <h3>Delete Category</h3>
         <RxAlertDialog
@@ -36,6 +41,15 @@ export default function TaskSettings() {
           deleteCategory={deleteCategory}
           router={router}
         ></RxAlertDialog>
+      </section>
+      <section>
+        <h3>Set Task Completion Animations</h3>
+        <TaskCheckbox
+          isCompleted={shimmerEnabled}
+          onChange={() => {
+            setShimmerEnabled(!shimmerEnabled);
+          }}
+        ></TaskCheckbox>
       </section>
     </div>
   );

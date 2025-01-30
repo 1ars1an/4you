@@ -1,7 +1,9 @@
 import Image from 'next/image';
 import { TaskCheckbox } from './Forms/TaskCompletion';
 import { TkDialog } from './Dialogs/TaskInfoDialog';
-import { Fragment } from 'react';
+import { Fragment, useContext } from 'react';
+
+import { globalSettingsContext } from '../lib/providers/globalSettings';
 
 const TaskGridSection = ({
   categoryId,
@@ -40,6 +42,8 @@ const TaskGridSection = ({
   };
 
   const gridGroups = splitTasksIntoGrids(tasks);
+
+  const { shimmerEnabled } = useContext(globalSettingsContext);
 
   return (
     // We wrap our grid sections in a container that will stack them vertically
@@ -97,15 +101,11 @@ const TaskGridSection = ({
                   </div>
                 </TkDialog>
                 {/* Shimmer Overlay */}
-                {task.isCompleted && (
-                  <div
-                    className="absolute inset-0 shimmer-overlay opacity-80"
-                    style={{ border: '1px solid black' }}
-                  />
+                {shimmerEnabled && task.isCompleted && (
+                  <div className="absolute inset-0 shimmer-overlay opacity-80" />
                 )}
               </Fragment>
             ))}
-            {console.log(gridTasks)}
             {/* Each grid section gets its own background image */}
             <div className="absolute inset-0 -z-10">
               <Image

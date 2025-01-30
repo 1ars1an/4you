@@ -23,8 +23,7 @@ export default function Home() {
     <section className="h-[calc(100vh-4rem)] w-[calc(100vw-4rem)] mx-auto flex flex-col">
       <div className="flex py-4">
         <div className="mr-auto flex gap-4 items-center">
-          <h3 className="">Temp</h3>
-          <button>ST</button>
+          <h3 className="">Select Category</h3>
         </div>
         <div className="flex gap-4 items-center">
           <RxDialog></RxDialog>

@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 import { useState, useEffect } from 'react';
 import { useTaskManager } from '../lib/providers/TaskProvider';
+import { globalSettings } from '../lib/providers/globalSettings';
 
 import { RxDialog } from '../ui/Dialogs/Dialog';
 import { TaskDialog } from '../ui/Dialogs/TaskDialog';

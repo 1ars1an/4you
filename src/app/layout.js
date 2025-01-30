@@ -3,6 +3,7 @@ import './globals.css';
 import Link from 'next/link';
 
 import { TaskProvider } from './lib/providers/TaskProvider';
+import { GlobalSettings } from './lib/providers/globalSettings';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -25,18 +26,20 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased h-screen flex flex-col`}
       >
-        <TaskProvider>
-          <header className="flex py-4 px-8">
-            <Link href={'/profile/'} className="mr-auto">
-              PF
-            </Link>
-            <div className="flex gap-2">
-              <Link href={'/'}>Home</Link>
-              <Link href={'/settings/'}>Settings</Link>
-            </div>
-          </header>
-          {children}
-        </TaskProvider>
+        <GlobalSettings>
+          <TaskProvider>
+            <header className="flex py-4 px-8">
+              <Link href={'/profile/'} className="mr-auto">
+                PF
+              </Link>
+              <div className="flex gap-2">
+                <Link href={'/'}>Home</Link>
+                <Link href={'/settings/'}>Settings</Link>
+              </div>
+            </header>
+            {children}
+          </TaskProvider>
+        </GlobalSettings>
       </body>
     </html>
   );
